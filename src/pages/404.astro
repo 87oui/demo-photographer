@@ -1,0 +1,19 @@
+---
+import Button from '@/components/Button.astro'
+import Heading from '@/components/Heading.astro'
+import Layout from '@/layouts/Lower.astro'
+---
+
+<Layout title="Error">
+  <div class="@container container">
+    <Heading level={1}>
+      <Fragment slot="heading">Error</Fragment>
+      <span slot="copy" class="uppercase">
+        Sorry, the page you are looking for doesn’t exist.
+      </span>
+    </Heading>
+  </div>
+  <main class="container mt-10 grid place-items-center">
+    <Button href="/">Home</Button>
+  </main>
+</Layout>

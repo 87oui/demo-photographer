@@ -1,0 +1,147 @@
+---
+import { Image } from 'astro:assets'
+
+import Button from '@/components/Button.astro'
+import Figures from '@/components/Figures.astro'
+import Heading from '@/components/Heading.astro'
+import author from '@/images/about/author.jpg'
+import cta01 from '@/images/about/cta-01.jpg'
+import cta02 from '@/images/about/cta-02.jpg'
+import example01 from '@/images/about/example-01.jpg'
+import example02 from '@/images/about/example-02.jpg'
+import example03 from '@/images/about/example-03.jpg'
+import example04 from '@/images/about/example-04.jpg'
+import fact01 from '@/images/about/fact-01.jpg'
+import fact02 from '@/images/about/fact-02.jpg'
+import fact03 from '@/images/about/fact-03.jpg'
+import illustBranch from '@/images/common/illust-branch.svg'
+import Layout from '@/layouts/Lower.astro'
+---
+
+<Layout title="About">
+  <div class="container">
+    <Heading level={1}>
+      <Fragment slot="heading">About</Fragment>
+      <span slot="copy" class="uppercase">My story</span>
+    </Heading>
+  </div>
+
+  <main>
+    <section class="">
+      <div
+        class="mt-13 grid place-items-center gap-x-[4.9%] gap-y-4 max-sm:px-(--gutter) sm:grid-cols-[45.7%_1fr] sm:grid-rows-[repeat(3,auto)]">
+        <Image
+          src={author}
+          alt=""
+          class="h-auto w-full object-cover max-sm:aspect-5/3 sm:row-span-full sm:h-full"
+          data-fade-in="toTop"
+        />
+        <div
+          class="space-y-[1lh] font-light text-gray-800"
+          data-fade-in="toTop">
+          <p class="">
+            Lorem ipsum dolor sit amet consectetur. Rutrum tincidunt consequat
+            nec potenti. Justo molestie amet vulputate aliquam viverra ut
+            viverra lorem. Velit tellus vitae massa sed egestas ornare pretium.
+            Donec odio faucibus consectetur feugiat varius.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur. Rutrum tincidunt consequat
+            nec potenti. Justo molestie amet vulputate aliquam viverra ut
+            viverra lorem. Velit tellus
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur. Rutrum tincidunt consequat
+            nec potenti. Justo molestie amet vulputate aliquam viverra ut
+            viverra lorem. Velit tellus vitae massa sed egestas ornare pretium
+          </p>
+        </div>
+        <Image
+          src={illustBranch}
+          alt=""
+          class="rotate-87"
+          data-fade-in="toTop"
+        />
+        <Button href="/portfolio" data-fade-in="toTop">View portfolio</Button>
+      </div>
+      <div class="@container mt-18.5 flex justify-between">
+        {
+          [example01, example02, example03, example04].map((image, i) => (
+            <Image
+              src={image}
+              alt=""
+              class="h-[28.4cqi] w-auto"
+              data-fade-in="toTop"
+              style={{ transitionDelay: `${i * 200}ms` }}
+            />
+          ))
+        }
+      </div>
+    </section>
+    <section class="container mt-27">
+      <Heading>
+        <Fragment slot="heading">Get to know me</Fragment>
+        <Fragment slot="copy">A few facts about myself</Fragment>
+      </Heading>
+      <Figures
+        items={[
+          {
+            image: fact01,
+            caption: {
+              description:
+                'Lorem ipsum dolor sit amet as a consectetur. Rutrum ins tincidunt consequat nec potenti. Justo molestie amet vulputate aliquam.',
+            },
+          },
+          {
+            image: fact02,
+            caption: {
+              description:
+                'Lorem ipsum dolor sit amet as a consectetur. Rutrum ins tincidunt consequat nec potenti. Justo molestie amet vulputate aliquam.',
+            },
+          },
+          {
+            image: fact03,
+            caption: {
+              description:
+                'Lorem ipsum dolor sit amet as a consectetur. Rutrum ins tincidunt consequat nec potenti. Justo molestie amet vulputate aliquam.',
+            },
+          },
+        ]}
+        class="mt-14.5"
+      />
+    </section>
+
+    <section
+      class="z-1 mt-21.5 grid grid-cols-[var(--gutter)_1fr_var(--gutter)] before:-z-1 before:col-span-full before:row-start-2 before:bg-gray-100 sm:grid-cols-[var(--gutter)_1fr_6.9%_20.2%_20.2%__var(--gutter)] sm:grid-rows-[repeat(3,auto)]">
+      <Heading class="col-start-2 self-end text-left">
+        <Fragment slot="heading">Crafting memories</Fragment>
+        <Fragment slot="copy">Your story, my lens</Fragment>
+      </Heading>
+      <p
+        class="col-start-2 row-start-2 pt-3 pb-6.5 font-light"
+        data-fade-in="toTop">
+        Your wedding day is a once-in-a-lifetime event, and choosing the right
+        photographer is essential to preserving its magic for years to come. I
+        would be honored to be a part of your special day.
+      </p>
+      <Button
+        href="/contact"
+        class="col-start-2 row-start-3 mt-6.5 place-self-start self-start"
+        data-fade-in="toTop">
+        Book Now
+      </Button>
+      <Image
+        src={cta01}
+        alt=""
+        class="h-full w-full object-cover max-sm:hidden sm:-col-end-3 sm:row-span-2 sm:row-start-1"
+        data-fade-in="toTop"
+      />
+      <Image
+        src={cta02}
+        alt=""
+        class="h-full w-full object-cover max-sm:hidden sm:-col-end-2 sm:row-span-2 sm:row-start-2"
+        data-fade-in="toTop"
+      />
+    </section>
+  </main>
+</Layout>

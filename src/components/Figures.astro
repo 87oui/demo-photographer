@@ -1,0 +1,59 @@
+---
+import { Image } from 'astro:assets'
+
+import type { ImageMetadata } from 'astro'
+import type { HTMLAttributes } from 'astro/types'
+import { twMerge } from 'tailwind-merge'
+
+export type Props = HTMLAttributes<'div'> & {
+  items: {
+    image: ImageMetadata
+    caption?: {
+      title?: string
+      description?: string
+    }
+  }[]
+}
+
+const { items = [], class: className = '', ...props } = Astro.props
+---
+
+<div class={twMerge('grid grid-cols-2 sm:grid-cols-3', className)} {...props}>
+  {
+    items.map(({ image, caption }, i) => (
+      <figure class={twMerge(caption ? 'contents' : 'max-sm:hidden')}>
+        <Image
+          src={image}
+          alt=""
+          class="h-full w-full object-cover"
+          data-fade-in="toTop"
+        />
+        {caption && (
+          <div class="flex flex-col items-center justify-center gap-y-2.5 p-6.5 text-center">
+            <h3 class="flex flex-col items-center gap-y-2.5">
+              <span
+                class="text-primary border-b border-current px-[0.76em] pb-[0.25em] text-[4.2rem]/none font-semibold"
+                data-fade-in="toTop">
+                {i + 1}
+              </span>
+              {caption.title && (
+                <span
+                  class="font-light text-gray-800 uppercase"
+                  data-fade-in="toTop">
+                  {caption.title}
+                </span>
+              )}
+            </h3>
+            {caption.description && (
+              <p
+                class="text-center font-light text-gray-800"
+                data-fade-in="toTop">
+                {caption.description}
+              </p>
+            )}
+          </div>
+        )}
+      </figure>
+    ))
+  }
+</div>

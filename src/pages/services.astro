@@ -1,0 +1,246 @@
+---
+import { Image } from 'astro:assets'
+
+import Button from '@/components/Button.astro'
+import Figures from '@/components/Figures.astro'
+import Heading from '@/components/Heading.astro'
+import illustBranch from '@/images/common/illust-branch.svg'
+import cta01 from '@/images/services/cta-01.jpg'
+import cta02 from '@/images/services/cta-02.jpg'
+import packageEngagement from '@/images/services/package-engagement.jpg'
+import packagePortrait from '@/images/services/package-portrait.jpg'
+import packageWedding from '@/images/services/package-wedding.jpg'
+import process01 from '@/images/services/process-01.jpg'
+import process02 from '@/images/services/process-02.jpg'
+import process03 from '@/images/services/process-03.jpg'
+import process04 from '@/images/services/process-04.jpg'
+import process05 from '@/images/services/process-05.jpg'
+import Layout from '@/layouts/Lower.astro'
+---
+
+<Layout title="Services">
+  <div class="container">
+    <Heading level={1}>
+      <Fragment slot="heading">Services</Fragment>
+      <span slot="copy" class="uppercase">Photography Packages</span>
+    </Heading>
+  </div>
+
+  <main>
+    <section class="container grid">
+      <div
+        class="mt-11 grid grid-cols-[repeat(auto-fit,minmax(min(220px,100%),1fr))] grid-rows-[repeat(4,auto)] gap-7">
+        {
+          [
+            {
+              title: 'Wedding',
+              image: packageWedding,
+              includes: ['500+ High-Quality Photos', '6Hours HD Footage'],
+              notes: [
+                'Additional Photographer subject to charge',
+                'Videographer subject to charge',
+              ],
+              price: 799,
+            },
+            {
+              title: 'Portrait',
+              image: packagePortrait,
+              includes: [
+                'Atleast 10 High-Quality Photos',
+                'Professionally Edited',
+                'Hourly rates applied',
+              ],
+              notes: ['Videographer subject to charge'],
+              price: 399,
+            },
+            {
+              title: 'Engagement',
+              image: packageEngagement,
+              includes: ['200 High-Quality Photos', '3 Hours HD Footage'],
+              notes: [
+                'Additional Photographer subject to charge',
+                'Videographer subject to charge',
+              ],
+              price: 799,
+            },
+          ].map(({ title, image, includes, notes, price }, i) => (
+            <section
+              class="row-span-4 grid grid-rows-subgrid gap-y-0"
+              data-fade-in="toTop"
+              style={{ transitionDelay: `${i * 200}ms` }}>
+              <Image src={image} alt="" class="w-full" />
+              <h3 class="font-ephesis text- mt-6.5 place-self-center text-[2.8rem] text-gray-700">
+                {title}
+              </h3>
+              <div class="px-6">
+                <ul class="font-light text-gray-800">
+                  {includes.map((include) => (
+                    <li class="">{include}</li>
+                  ))}
+                </ul>
+                <ul class="font-light text-gray-800">
+                  {notes.map((note) => (
+                    <li class="">* {note}</li>
+                  ))}
+                </ul>
+              </div>
+              <p class="mt-4 flex flex-col items-center">
+                <small class="text-raleway text-primary leading-relaxed tracking-[0.2em] uppercase">
+                  per session
+                </small>
+                <span class="text-[2.2rem]">${price}</span>
+              </p>
+            </section>
+          ))
+        }
+      </div>
+      <Button
+        href="/contact"
+        color="primary-inverse"
+        class="mt-10 place-self-center uppercase"
+        data-fade-in="toTop">
+        Get in touch
+      </Button>
+    </section>
+    <section class="mt-17.5 bg-gray-100 pt-5 pb-16.5">
+      <div class="@container container flex flex-col items-center text-center">
+        <Image
+          src={illustBranch}
+          alt=""
+          class="rotate-50"
+          data-fade-in="toTop"
+        />
+        <p
+          class="text-[clamp(1.5rem,5.3cqi,2.2rem)] text-gray-600"
+          data-fade-in="toTop">
+          Celebrate your love with stunning images that will be cherished for a
+          lifetime
+        </p>
+      </div>
+    </section>
+    <section class="container mt-19.5">
+      <Heading>
+        <Fragment slot="heading">Process</Fragment>
+        <Fragment slot="copy">What to Expect</Fragment>
+      </Heading>
+      <Figures
+        items={[
+          {
+            image: process01,
+            caption: {
+              title: 'Breaking the ice',
+              description:
+                'Lorem ipsum dolor sit amet as a consectetur. Rutrum ins tincidunt consequat nec potenti. Justo molestie amet vulputate aliquam.',
+            },
+          },
+          {
+            image: process02,
+            caption: {
+              title: 'Planning & preparation',
+              description:
+                'Lorem ipsum dolor sit amet as a consectetur. Rutrum ins tincidunt consequat nec potenti. Justo molestie amet vulputate aliquam.',
+            },
+          },
+          {
+            image: process03,
+            caption: {
+              title: 'Session coverage',
+              description:
+                'Lorem ipsum dolor sit amet as a consectetur. Rutrum ins tincidunt consequat nec potenti. Justo molestie amet vulputate aliquam.',
+            },
+          },
+          {
+            image: process04,
+            caption: {
+              title: 'Post-production & delivery',
+              description:
+                'Lorem ipsum dolor sit amet as a consectetur. Rutrum ins tincidunt consequat nec potenti. Justo molestie amet vulputate aliquam.',
+            },
+          },
+          {
+            image: process05,
+          },
+        ]}
+        class="mt-13"
+      />
+    </section>
+    <section class="container mt-19.5">
+      <Heading>
+        <Fragment slot="heading">FAQ</Fragment>
+        <Fragment slot="copy">Any queries?</Fragment>
+      </Heading>
+      <div class="mt-12" data-fade-in="toTop">
+        {
+          [
+            {
+              q: 'What is your photography style?',
+              a: 'Lorem ipsum dolor sit amet as a consectetur. Rutrum ins tincidunt consequat nec potenti. Justo molestie amet vulputate aliquam.',
+            },
+            {
+              q: 'How far in advance can should we book your services?',
+              a: 'Lorem ipsum dolor sit amet as a consectetur. Rutrum ins tincidunt consequat nec potenti. Justo molestie amet vulputate aliquam.',
+            },
+            {
+              q: 'Do you require a deposit, and what are your payment terms?',
+              a: 'Lorem ipsum dolor sit amet as a consectetur. Rutrum ins tincidunt consequat nec potenti. Justo molestie amet vulputate aliquam.',
+            },
+            {
+              q: 'Can we customize a photography package to fit your neerds?',
+              a: 'Lorem ipsum dolor sit amet as a consectetur. Rutrum ins tincidunt consequat nec potenti. Justo molestie amet vulputate aliquam.',
+            },
+            {
+              q: 'How soon after the event will receive your photos?',
+              a: 'Lorem ipsum dolor sit amet as a consectetur. Rutrum ins tincidunt consequat nec potenti. Justo molestie amet vulputate aliquam.',
+            },
+          ].map(({ q, a }) => (
+            <details class="grid grid-cols-[1.3em_1fr] gap-x-[1.3em] details-content:-col-end-1">
+              <summary class="col-span-2 grid cursor-pointer grid-cols-subgrid pt-[0.67em] font-light uppercase">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  class="stroke-primary-dark size-6">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M12 4.5v15m7.5-7.5h-15"
+                  />
+                </svg>
+                <div class="border-b border-gray-300 pb-[0.85em]">{q}</div>
+              </summary>
+              <p class="py-4">{a}</p>
+            </details>
+          ))
+        }
+      </div>
+    </section>
+    <section class="@container container mt-19.5" data-fade-in="toTop">
+      <div
+        class="z-1 grid max-w-[968px] sm:grid-cols-[17%_13%_4%_1fr_9.8%] sm:grid-rows-[5cqi_auto_auto_auto_21.6cqi_7.2cqi] sm:before:-z-1 sm:before:col-start-2 sm:before:-col-end-2 sm:before:row-start-3 sm:before:-row-end-2 sm:before:bg-gray-100">
+        <h2
+          class="font-ephesis text-[2.2rem] tracking-wider sm:col-start-4 sm:-col-end-1 sm:row-start-2">
+          Quality Service
+        </h2>
+        <p
+          class="py-[0.6em] font-light sm:col-start-4 sm:-col-end-1 sm:row-start-3">
+          On your big day, you can count on me to turn fleeting moments into
+          timeless treasures you will cherish for generations.
+        </p>
+        <Button class="mb-5.5 place-self-start sm:col-start-4 sm:row-start-4">
+          Enquire now
+        </Button>
+        <Image
+          src={cta01}
+          alt=""
+          class="w-full max-sm:hidden sm:col-span-2 sm:col-start-1 sm:row-span-full sm:row-start-1"
+        />
+        <Image
+          src={cta02}
+          alt=""
+          class="h-full w-auto max-sm:hidden sm:col-span-2 sm:-col-end-1 sm:row-span-2 sm:-row-end-1"
+        />
+      </div>
+    </section>
+  </main>
+</Layout>

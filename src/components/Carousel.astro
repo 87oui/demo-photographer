@@ -1,0 +1,111 @@
+---
+import { twMerge } from 'tailwind-merge'
+
+const { class: className = '', arrows = false, ...props } = Astro.props
+---
+
+<div class={twMerge('slider', className)} {...props}>
+  <div class="slider__viewport">
+    <div class="slider__container">
+      <slot />
+    </div>
+  </div>
+
+  {
+    arrows && (
+      <>
+        <button class="slider__prev">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="aspect-square h-auto w-full">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M15.75 19.5 8.25 12l7.5-7.5"
+            />
+          </svg>
+        </button>
+        <button class="slider__next">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="aspect-square h-auto w-full">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="m8.25 4.5 7.5 7.5-7.5 7.5"
+            />
+          </svg>
+        </button>
+      </>
+    )
+  }
+</div>
+
+<script>
+  import EmblaCarousel from 'embla-carousel'
+
+  const wrapperNodes = document.querySelectorAll('.slider')
+  for (const wrapperNode of wrapperNodes) {
+    const viewportNode = wrapperNode.querySelector('.slider__viewport')
+    if (!viewportNode) continue
+
+    const emblaApi = EmblaCarousel(viewportNode as HTMLElement, { loop: true })
+    const prevButtonNode = wrapperNode.querySelector('.slider__prev')
+    const nextButtonNode = wrapperNode.querySelector('.slider__next')
+    prevButtonNode?.addEventListener(
+      'click',
+      () => emblaApi.scrollPrev(),
+      false
+    )
+    nextButtonNode?.addEventListener(
+      'click',
+      () => emblaApi.scrollNext(),
+      false
+    )
+  }
+</script>
+
+<style>
+  @reference "@/styles/main.css";
+
+  .slider {
+    @apply grid place-items-center gap-x-2;
+    grid-template: 'viewport' 1fr / 100%;
+
+    &:has(.slider__prev, .slider__next) {
+      grid-template: 'prev viewport next' 1fr / theme(spacing.5) 1fr theme(
+          spacing.5
+        );
+    }
+  }
+
+  .slider__viewport {
+    @apply overflow-hidden;
+    grid-area: viewport;
+  }
+
+  .slider__container {
+    @apply flex touch-pan-y touch-pinch-zoom;
+  }
+
+  .slider__prev {
+    grid-area: prev;
+  }
+
+  .slider__next {
+    grid-area: next;
+  }
+
+  .slider__prev,
+  .slider__next {
+    @apply bg-primary-pale text-primary cursor-pointer py-2;
+  }
+</style>

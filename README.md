@@ -1,46 +1,11 @@
-# Astro Starter Kit: Basics
+# 自主制作（フォトグラファーウェブサイト）
 
-```sh
-npm create astro@latest -- --template basics
-```
+## デザイン
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+[9-Page Wedding Photography Website UI Design](https://www.figma.com/community/file/1402498681469288785/9-page-wedding-photography-website-ui-design)
 
-## 🚀 Project Structure
+## 使ったもの
 
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
-```
-
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- フレームワーク: [Astro](https://astro.build/)
+- スタイル: [Tailwind CSS](https://tailwindcss.com/)
+- カルーセル: [Embla Carousel](https://www.embla-carousel.com/)

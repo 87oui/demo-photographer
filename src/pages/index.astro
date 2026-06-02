@@ -1,11 +1,368 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets'
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Button from '@/components/Button.astro'
+import Carousel from '@/components/Carousel.astro'
+import CarouselSlide from '@/components/CarouselSlide.astro'
+import Contact from '@/components/Contact.astro'
+import Firstview from '@/components/Firstview.astro'
+import Heading from '@/components/Heading.astro'
+import illustBranch from '@/images/common/illust-branch.svg'
+import illustFlower01 from '@/images/common/illust-flower-01.svg'
+import illustFlower02 from '@/images/common/illust-flower-02.svg'
+import illustFlower03 from '@/images/common/illust-flower-03.svg'
+import illustFlowerLine from '@/images/common/illust-flower_line.svg'
+import illustQuote from '@/images/common/illust-quote.svg'
+import author from '@/images/home/author.jpg'
+import client01 from '@/images/home/client-01.jpg'
+import contact from '@/images/home/contact.jpg'
+import hero from '@/images/home/hero.jpg'
+import portfolioRicardoAndMichelle01 from '@/images/home/portfolio-ricardo_and_michelle-01.jpg'
+import portfolioRicardoAndMichelle02 from '@/images/home/portfolio-ricardo_and_michelle-02.jpg'
+import Layout from '@/layouts/Layout.astro'
 ---
 
 <Layout>
-	<Welcome />
+  <div
+    class="relative grid place-content-center place-items-center *:col-start-1 *:row-start-1">
+    <Firstview class="max-sm:h-screen" data-fade-in="toTop" />
+    <hgroup class="p-5 text-center">
+      <p
+        class="text-primary font-ephesis text-[clamp(1.5rem,4.4cqi,4rem)] font-bold tracking-wider delay-200"
+        data-fade-in="toTop">
+        Your Dream Wedding Awaits
+      </p>
+      <h1
+        class="mt-[0.3em] text-[clamp(1.8rem,5.5cqi,5rem)] font-semibold text-white drop-shadow-lg delay-400"
+        data-fade-in="toTop">
+        Artistic Wedding Photography
+      </h1>
+    </hgroup>
+  </div>
+
+  <section class="bg-gray-100">
+    <div
+      class="@container container grid place-items-center pt-[6.6%] pb-[10%] text-center">
+      <Image
+        src={illustBranch}
+        alt=""
+        class="w-[5.4cqi] rotate-50"
+        data-fade-in="toTop"
+      />
+      <h2
+        class="font-raleway text-primary text-[2.3cqi] font-medium tracking-[0.2em] uppercase delay-200"
+        data-fade-in="toTop">
+        Award winning photography
+      </h2>
+      <p
+        class="mt-8 text-[5.3cqi]/snug text-gray-600 delay-400"
+        data-fade-in="toTop">
+        Showcasing your big day in a memorable and unforgettable way.
+      </p>
+    </div>
+  </section>
+
+  <section class="grid sm:grid-cols-[48.1%_1fr]">
+    <Image
+      src={author}
+      alt=""
+      class="h-full w-full object-cover object-right max-sm:h-75"
+      data-fade-in="toTop"
+    />
+    <div
+      class="@container mt-12.5 grid grid-cols-[1fr_min(82%,38.375rem)_1fr] place-content-center place-items-center text-center *:col-start-2">
+      <Image
+        src={illustQuote}
+        alt=""
+        class="w-[12cqi] delay-200"
+        data-fade-in="toTop"
+      />
+      <h2 class="text-[7.8cqi]">Hello, My Name is Tessa</h2>
+      <p class="mt-7.5" data-fade-in="toTop">
+        Lorem ipsum dolor sit amet consectetur. Dignissim consectetur tristique
+        purus vehicula felis velit ac. Tempus velit morbi accumsan id sit
+        interdum lacus turpis ac. Integer malesuada sagittis placerat eget.
+      </p>
+      <p class="mt-[1lh]" data-fade-in="toTop">
+        Lorem ipsum dolor sit amet consectetur. Dignissim consectetur tristique
+        purus vehicula felis velit ac. Tempus velit morbi accumsan id sit
+        interdum lacus turpis ac. Integer malesuada sagittis placerat.
+      </p>
+      <Image
+        src={illustFlowerLine}
+        alt=""
+        class="mt-10 w-[49cqi]"
+        data-fade-in="toTop"
+      />
+      <span
+        class="font-ephesis mt-12.5 text-[9.7cqi] tracking-wider text-gray-600"
+        data-fade-in="toTop">
+        Tessa.M
+      </span>
+      <Button class="mt-3" data-fade-in="toTop">Learn more</Button>
+    </div>
+  </section>
+
+  <section class="py-25">
+    <div class="@container container">
+      <Heading>
+        <Fragment slot="heading">Services</Fragment>
+        <Fragment slot="copy">What I offer</Fragment>
+      </Heading>
+      <div
+        class="mt-7.5 grid grid-cols-[repeat(auto-fit,minmax(min(180px,100%),1fr))] gap-[5.5cqi]">
+        {
+          [
+            {
+              title: 'Wedding',
+              price: 2999,
+              illust: illustFlower01,
+            },
+            {
+              title: 'Portrait',
+              price: 399,
+              illust: illustFlower02,
+            },
+            {
+              title: 'Engagement',
+              price: 1999,
+              illust: illustFlower03,
+            },
+          ].map(({ title, price, illust }, i) => (
+            <section
+              class="@container grid place-items-center bg-gray-100 p-[12.4%]"
+              data-fade-in="toTop"
+              style={{ transitionDelay: `${i * 200}ms` }}>
+              <Image src={illust} alt="" class="h-[40cqi] w-auto" />
+              <h3 class="font-ephesis text-[2.1rem] tracking-wider text-gray-600">
+                {title}
+              </h3>
+              <p class="mt-4 text-center text-gray-600">
+                <small class="text-[0.85rem] capitalize">Per session</small>
+                <br />
+                <span class="text-[1.8rem]/1 font-light tracking-wider">
+                  ${price}
+                </span>
+              </p>
+              <Button href="/services" class="mt-6">
+                More details
+              </Button>
+            </section>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section
+    class="grid place-items-center bg-gray-100 md:grid-cols-[repeat(8,1fr)] md:grid-rows-[--spacing(9)_1fr_--spacing(9)]">
+    <Image
+      src={hero}
+      alt=""
+      class="md:col-span-6 md:col-start-1 md:row-span-full md:row-start-1"
+      data-fade-in="toTop"
+    />
+    <div
+      class="before:border-primary-dark @container relative z-1 grid w-[stretch] place-content-center place-items-center bg-white/90 p-10 delay-200 before:absolute before:inset-2.5 before:-z-1 before:border max-md:mx-5 max-md:-mt-10 max-md:max-w-xs sm:p-5 md:col-span-2 md:col-start-6 md:row-start-2 md:gap-y-3.5"
+      data-fade-in="toTop">
+      <Image src={illustBranch} alt="" class="w-[13.6cqi]" />
+      <h2
+        class="font-ephesis text-center text-[11.3cqi] tracking-wider text-gray-500">
+        Creative, Passionate, Artistic
+      </h2>
+      <p
+        class="px-[3cqi] text-center text-[clamp(var(--text-sm),6.3cqi,var(--text-base))] font-light text-gray-700">
+        Lorem ipsum dolor sit amet consectetur. Dignissim consectetur tristique
+        purus vehicula felis velit ac. Tempus velit morbi accumsan
+      </p>
+    </div>
+  </section>
+
+  <section class="mt-15 grid">
+    <Heading>
+      <Fragment slot="heading">Portfolio</Fragment>
+      <Fragment slot="copy">Featured story</Fragment>
+    </Heading>
+    <div
+      class="mt-8 grid grid-cols-[var(--gutter)_1fr_var(--gutter)] gap-y-10 sm:grid-cols-[var(--gutter)_1fr_--spacing(9)1fr_var(--gutter)] md:grid-cols-[var(--gutter)_1fr_--spacing(5.5)_var(--image-width)_--spacing(5.5)_var(--image-width)_var(--gutter)] md:grid-rows-[1fr_auto]"
+      style="--image-width: calc((100cqi - var(--gutter) * 2) * 0.312)">
+      {
+        [
+          {
+            title: 'Ricardo & Michelle',
+            body: 'Lorem ipsum dolor sit amet consecte Dignissim consectetur tristique purus vehicula felis velit.',
+            images: [
+              portfolioRicardoAndMichelle01,
+              portfolioRicardoAndMichelle02,
+            ],
+          },
+        ].map(({ title, body, images }, i) => (
+          <section class="z-1 col-span-full grid grid-cols-subgrid gap-y-5 before:-z-1 before:col-span-full before:col-start-1 before:-row-end-1 before:bg-gray-100 before:max-md:hidden max-sm:*:col-start-2 md:row-span-2 md:grid-rows-subgrid">
+            <div class="col-start-2 sm:max-md:col-end-5 md:row-start-2">
+              <span
+                class="text-primary-dark text-[4.2rem] font-medium"
+                data-fade-in="toTop">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <h3
+                class="font-ephesis text-[1.6rem] tracking-wider text-gray-600 delay-200"
+                data-fade-in="toTop">
+                {title}
+              </h3>
+              <p class="text-base font-light delay-400" data-fade-in="toTop">
+                {body}
+              </p>
+            </div>
+            <Image
+              src={images[0]}
+              alt=""
+              class="h-full w-full object-cover delay-600 sm:col-start-2 sm:max-md:row-start-2 md:col-start-4 md:row-span-full md:row-start-1"
+              data-fade-in="toTop"
+            />
+            <Image
+              src={images[1]}
+              alt=""
+              class="h-full w-full object-cover delay-800 max-sm:hidden sm:col-start-4 sm:max-md:row-start-2 md:col-start-6 md:row-span-full md:row-start-1"
+              data-fade-in="toTop"
+            />
+          </section>
+        ))
+      }
+    </div>
+    <Button
+      href="/portfolio"
+      class="mt-8.5 mr-(--gutter) justify-self-end"
+      data-fade-in="toTop">
+      View gallery
+    </Button>
+  </section>
+
+  <section class="mt-8.5">
+    <h2
+      class="font-ephesis text-center text-[2.5rem] text-gray-600 capitalize"
+      data-fade-in="toTop">
+      Client testimonials
+    </h2>
+    <div class="bg-gray-100">
+      <div class="container py-11">
+        <Carousel arrows={true}>
+          {
+            [
+              {
+                image: client01,
+                body: 'Showcasing your Big Day in a Memorable & Unforgettable way.',
+                name: 'Sarah & Luke',
+              },
+              {
+                image: client01,
+                body: 'Showcasing your Big Day in a Memorable & Unforgettable way.',
+                name: 'Sarah & Luke',
+              },
+            ].map(({ image, body, name }) => (
+              <CarouselSlide>
+                <div class="grid gap-6 sm:grid-cols-2">
+                  <div class="border-primary grid place-content-center place-items-center border bg-white p-5">
+                    <Image src={illustQuote} alt="" class="w-8.5" />
+                    <p class="mt-6 text-center text-base text-gray-600">
+                      {body}
+                    </p>
+                    <p class="mt-11 text-base font-light uppercase">{name}</p>
+                  </div>
+                  <Image
+                    src={image}
+                    alt=""
+                    class="aspect-square h-auto w-full object-cover"
+                  />
+                </div>
+              </CarouselSlide>
+            ))
+          }
+        </Carousel>
+      </div>
+    </div>
+  </section>
+
+  <section class="mt-14">
+    <div class="container">
+      <h2
+        class="mx-auto max-w-[18em] text-center text-[1.4rem] uppercase"
+        data-fade-in="toTop">
+        helping couples bring to life their wedding dreams
+      </h2>
+      <ul
+        class="grid grid-cols-[repeat(auto-fit,minmax(min(100px,100%),1fr))] gap-10">
+        {
+          [
+            {
+              title: 'Years experience',
+              value: '12',
+            },
+            {
+              title: 'Photos Delivered',
+              value: '10K',
+            },
+            {
+              title: 'Events Captured',
+              value: '300',
+            },
+            {
+              title: 'Awards',
+              value: '6',
+            },
+          ].map(({ title, value }, i) => (
+            <li
+              class="@container text-center *:block"
+              data-fade-in="toTop"
+              style={{ transitionDelay: `${i * 200}ms` }}>
+              <span class="text-primary-dark text-[60cqi]/tight tracking-wider">
+                {value}
+              </span>
+              <span class="font-ephesis text-[15cqi] text-gray-600">
+                {title}
+              </span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="container mt-18.5">
+    <div class="grid bg-gray-100 sm:grid-cols-[1fr_48%]">
+      <div class="px-[9.3%] py-[10%]">
+        <Heading class="items-start">
+          <Fragment slot="heading">Contact</Fragment>
+          <Fragment slot="copy">Get in Touch</Fragment>
+        </Heading>
+        <Contact
+          items={[
+            {
+              label: 'Name',
+              name: 'name',
+              autocomplete: 'name',
+            },
+            {
+              label: 'Email',
+              name: 'email',
+              type: 'email',
+              autocomplete: 'email',
+            },
+            {
+              label: 'Message',
+              name: 'message',
+              rows: 3,
+            },
+          ]}
+          class="mt-14"
+          data-fade-in="toTop"
+        />
+      </div>
+      <Image
+        src={contact}
+        alt=""
+        class="h-full w-full object-cover max-sm:hidden"
+        data-fade-in="toTop"
+      />
+    </div>
+  </section>
 </Layout>

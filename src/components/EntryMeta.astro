@@ -1,0 +1,23 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+import { twMerge } from 'tailwind-merge'
+
+export type Props = HTMLAttributes<'dl'> & {
+  meta: Record<string, string>
+}
+
+const { meta, class: className = '', ...props } = Astro.props
+---
+
+<dl class={twMerge('flex items-baseline justify-center', className)} {...props}>
+  {
+    Object.entries(meta).map(([key, value]) => (
+      <Fragment>
+        <dt class="font-light capitalize not-first:ml-[16%]">{key}: </dt>
+        <dd class="font-ephesis text-primary-dark pl-1.5 text-sm tracking-wider">
+          {value}
+        </dd>
+      </Fragment>
+    ))
+  }
+</dl>

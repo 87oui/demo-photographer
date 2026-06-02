@@ -1,5 +1,5 @@
 import tailwindcss from '@tailwindcss/vite'
-import { defineConfig } from 'astro/config'
+import { defineConfig, fontProviders } from 'astro/config'
 
 // https://astro.build/config
 export default defineConfig({
@@ -7,10 +7,28 @@ export default defineConfig({
   server: {
     host: true,
   },
-  // image: {
-  //   layout: 'constrained',
-  // },
+  fonts: [
+    {
+      provider: fontProviders.fontsource(),
+      name: 'Cormorant Garamond',
+      cssVariable: '--font-garamond',
+      fallbacks: ['serif'],
+    },
+    {
+      provider: fontProviders.fontsource(),
+      name: 'Raleway',
+      cssVariable: '--font-raleway',
+      fallbacks: ['sans-serif'],
+    },
+    {
+      provider: fontProviders.fontsource(),
+      name: 'Ephesis',
+      cssVariable: '--font-ephesis',
+      fallbacks: ['cursive'],
+    },
+  ],
   vite: {
     plugins: [tailwindcss()],
   },
+  integrations: [],
 })

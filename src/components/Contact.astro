@@ -1,0 +1,94 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+import { twMerge } from 'tailwind-merge'
+
+import { button } from '@/components/variants'
+
+interface ContactItemBase {
+  label: string
+}
+type ContactInputItem = ContactItemBase & HTMLAttributes<'input'>
+type ContactTextareaItem = ContactItemBase & HTMLAttributes<'textarea'>
+type ContactItem = ContactInputItem | ContactTextareaItem
+
+interface Props {
+  items?: ContactItem[]
+  class?: string
+}
+
+const { items = [], class: className = '', ...props } = Astro.props as Props
+---
+
+<form action="" class={twMerge('grid gap-y-4', className)} {...props}>
+  <div class="grid gap-y-6">
+    {
+      items.map((item) => {
+        const { label, name, class: itemClass, ...rest } = item
+        const rowCount =
+          'rows' in item && item.rows != null ? Number(item.rows) : 1
+
+        if (!label || !name) return null
+
+        const inputClass = twMerge('input', itemClass)
+
+        if (rowCount > 1) {
+          return (
+            <div class="item">
+              <label class="label" for={`form-${name}`}>
+                {label}
+              </label>
+              <textarea
+                id={`form-${name}`}
+                class={inputClass}
+                name={name}
+                rows={rowCount}
+                {...rest}
+              />
+            </div>
+          )
+        }
+
+        const {
+          type = 'text',
+          autocomplete = 'off',
+          ...inputRest
+        } = rest as HTMLAttributes<'input'>
+
+        return (
+          <div class="item">
+            <label class="label" for={`form-${name}`}>
+              {label}
+            </label>
+            <input
+              type={type}
+              id={`form-${name}`}
+              class={inputClass}
+              name={name}
+              autocomplete={autocomplete}
+              {...inputRest}
+            />
+          </div>
+        )
+      })
+    }
+  </div>
+  <button type="submit" class={twMerge(button(), 'place-self-start')}>
+    Send
+  </button>
+</form>
+
+<style>
+  @reference '@/styles/main.css';
+
+  .item {
+    @apply grid py-1;
+  }
+
+  .label {
+    @apply font-light text-gray-600 capitalize;
+  }
+
+  .input {
+    @apply bg-white p-2 text-sm;
+  }
+</style>

@@ -1,0 +1,16 @@
+---
+import { twMerge } from 'tailwind-merge'
+
+const { class: className = '', ...props } = Astro.props
+---
+
+<div class={twMerge('slider__slide', className)} {...props}>
+  <slot />
+</div>
+
+<style>
+  .slider__slide {
+    flex: 0 0 100%;
+    min-width: 0;
+  }
+</style>

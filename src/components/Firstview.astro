@@ -1,0 +1,20 @@
+---
+import { Image } from 'astro:assets'
+
+import { twMerge } from 'tailwind-merge'
+
+import firstview from '@/images/common/firstview.jpg'
+
+const { class: className = '', ...props } = Astro.props
+---
+
+<Image
+  src={firstview}
+  alt="Firstview"
+  width={1440}
+  height={913}
+  fetchpriority="high"
+  loading="eager"
+  class={twMerge('w-[100cqi] aspect-1440/913 h-auto object-cover', className)}
+  {...props}
+/>

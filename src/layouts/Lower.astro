@@ -1,0 +1,15 @@
+---
+import type { ComponentProps } from 'astro/types'
+
+import Firstview from '@/components/Firstview.astro'
+import Layout from '@/layouts/Layout.astro'
+
+export type Props = ComponentProps<typeof Layout>
+
+const { ...props } = Astro.props
+---
+
+<Layout {...props}>
+  <Firstview class="mt-(--header-height) mb-20 aspect-1440/418 object-top" />
+  <slot />
+</Layout>

@@ -1,0 +1,23 @@
+---
+import Gnav from '@/components/Gnav.astro'
+import Social from '@/components/Social.astro'
+---
+
+<footer class="mt-15.5 bg-gray-100 pt-1.5 pb-5">
+  <Gnav class="max-md:hidden" />
+
+  <div
+    class="@container container grid max-w-165 grid-rows-[auto_--spacing(12)_auto_--spacing(8)_auto] text-gray-800 md:w-[45%]">
+    <p class="mt-[1em] text-center">
+      Lorem ipsum dolor sit amet consectetur. Morbi volut tempus posuere viverra
+      massa fames sed. Dignissim urisus et ac egestas dignissim.
+    </p>
+
+    <Social class="row-start-3" />
+
+    <small
+      class="row-start-5 text-center text-[clamp(0.875rem,3.2cqi,1.25rem)] font-medium">
+      Copyright 2024 All Rights Reserved
+    </small>
+  </div>
+</footer>

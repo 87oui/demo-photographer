@@ -1,0 +1,131 @@
+---
+import { Image } from 'astro:assets'
+
+import ContactForm from '@/components/Contact.astro'
+import Heading from '@/components/Heading.astro'
+import address from '@/images/contact/address.jpg'
+import eyecatch from '@/images/contact/eyecatch.jpg'
+import Layout from '@/layouts/Lower.astro'
+---
+
+<Layout title="Contact">
+  <div class="@container container">
+    <Heading level={1}>
+      <Fragment slot="heading">Contact</Fragment>
+      <span slot="copy" class="uppercase">Get in touch</span>
+    </Heading>
+  </div>
+  <main class="mt-10">
+    <div class="grid sm:grid-cols-2">
+      <div class="grid place-items-center bg-gray-100 p-5">
+        <ContactForm
+          items={[
+            {
+              label: 'Your name',
+              name: 'name',
+              autocomplete: 'name',
+            },
+            {
+              label: 'Contact number',
+              name: 'phone',
+              type: 'tel',
+              autocomplete: 'tel',
+            },
+            {
+              label: 'Wedding / Event Date',
+              name: 'date',
+            },
+            {
+              label: 'Message',
+              name: 'message',
+              rows: 3,
+            },
+          ]}
+          class="w-full max-w-md"
+          data-fade-in="toTop"
+        />
+      </div>
+      <Image src={eyecatch} alt="" class="h-full w-full object-cover" />
+    </div>
+
+    <div class="container mt-18.5 max-w-lg text-center">
+      <p class="font-ephesis text-primary-dark text-[2.2rem] tracking-wider">
+        Enquire now!
+      </p>
+      <p class="text-[1.7rem]">
+        “YOU WILL NEVER KNOW THE VALUE OF A MOMENT UNTIL IT BECOMES A MEMORY.”
+      </p>
+    </div>
+
+    <div
+      class="mt-17.5 grid grid-cols-[var(--gutter)_1fr_var(--gutter)] *:row-start-1">
+      <Image
+        src={address}
+        alt=""
+        class="col-span-full col-start-1 h-full w-full object-cover"
+      />
+      <dl
+        class="-col-end-2 grid w-[min(--spacing(62),100%)] place-content-center place-items-center justify-self-end bg-white/90 p-7.5 text-center">
+        <dt class="contents">
+          <svg
+            width="80"
+            height="80"
+            viewBox="0 0 80 80"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M9.99967 16.6667V15C9.55765 15 9.13372 15.1756 8.82116 15.4882C8.5086 15.8007 8.33301 16.2246 8.33301 16.6667H9.99967ZM69.9997 16.6667H71.6663C71.6663 16.2246 71.4907 15.8007 71.1782 15.4882C70.8656 15.1756 70.4417 15 69.9997 15V16.6667ZM9.99967 18.3333H69.9997V15H9.99967V18.3333ZM68.333 16.6667V56.6667H71.6663V16.6667H68.333ZM63.333 61.6667H16.6663V65H63.333V61.6667ZM11.6663 56.6667V16.6667H8.33301V56.6667H11.6663ZM16.6663 61.6667C15.3403 61.6667 14.0685 61.1399 13.1308 60.2022C12.1931 59.2645 11.6663 57.9927 11.6663 56.6667H8.33301C8.33301 58.8768 9.21098 60.9964 10.7738 62.5592C12.3366 64.122 14.4562 65 16.6663 65V61.6667ZM68.333 56.6667C68.333 57.9927 67.8062 59.2645 66.8685 60.2022C65.9309 61.1399 64.6591 61.6667 63.333 61.6667V65C65.5431 65 67.6628 64.122 69.2256 62.5592C70.7884 60.9964 71.6663 58.8768 71.6663 56.6667H68.333Z"
+              fill="#B58B61"></path>
+            <path
+              d="M10 16.6666L40 46.6666L70 16.6666"
+              stroke="#B58B61"
+              stroke-linecap="round"
+              stroke-linejoin="round"></path>
+          </svg>
+          <span class="uppercase">Email</span>
+        </dt>
+        <dd>contact@TessaMorgan.xyz</dd>
+        <dt class="contents">
+          <svg
+            width="96"
+            height="96"
+            viewBox="0 0 96 96"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            class="mt-10">
+            <path
+              d="M48 81.6L46.464 79.872C45.504 78.912 23.04 52.416 23.04 36.48C23.04 22.656 34.176 11.52 48 11.52C61.824 11.52 72.96 22.656 72.96 36.48C72.96 52.416 50.496 78.912 49.536 80.064L48 81.6ZM48 15.36C36.288 15.36 26.88 24.768 26.88 36.48C26.88 48.768 43.008 69.504 48 75.648C52.992 69.504 69.12 48.768 69.12 36.48C69.12 24.768 59.712 15.36 48 15.36Z"
+              fill="#B58B61"></path>
+            <path
+              d="M48.0004 46.0799C42.6244 46.0799 38.4004 41.8559 38.4004 36.4799C38.4004 31.1039 42.6244 26.8799 48.0004 26.8799C53.3764 26.8799 57.6004 31.1039 57.6004 36.4799C57.6004 41.8559 53.3764 46.0799 48.0004 46.0799ZM48.0004 30.7199C44.7364 30.7199 42.2404 33.2159 42.2404 36.4799C42.2404 39.7439 44.7364 42.2399 48.0004 42.2399C51.2644 42.2399 53.7604 39.7439 53.7604 36.4799C53.7604 33.2159 51.2644 30.7199 48.0004 30.7199Z"
+              fill="#B58B61"></path>
+          </svg>
+          <span class="uppercase">Address</span>
+        </dt>
+        <dd>5396 North Reese Avenue, Fresno CA 93722</dd>
+        <dt class="contents">
+          <svg
+            width="87"
+            height="87"
+            viewBox="0 0 87 87"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            class="mt-10">
+            <g clip-path="url(#clip0_2_807)">
+              <path
+                d="M60.4167 9.66675H26.5833C25.3015 9.66675 24.0721 10.176 23.1657 11.0824C22.2592 11.9888 21.75 13.2182 21.75 14.5001V72.5001C21.75 73.782 22.2592 75.0113 23.1657 75.9178C24.0721 76.8242 25.3015 77.3334 26.5833 77.3334H60.4167C61.6985 77.3334 62.9279 76.8242 63.8344 75.9178C64.7408 75.0113 65.25 73.782 65.25 72.5001V14.5001C65.25 13.2182 64.7408 11.9888 63.8344 11.0824C62.9279 10.176 61.6985 9.66675 60.4167 9.66675ZM45.9167 72.5001H41.0833V67.6667H45.9167V72.5001ZM26.5833 62.8334V14.5001H60.4167V62.8334H26.5833Z"
+                fill="#B58B61"></path>
+            </g>
+            <defs>
+              <clipPath id="clip0_2_807">
+                <rect width="87" height="87" fill="white"></rect>
+              </clipPath>
+            </defs>
+          </svg>
+          <span class="uppercase">Contact</span>
+        </dt>
+        <dd>+1 901 247 5467</dd>
+      </dl>
+    </div>
+  </main>
+</Layout>

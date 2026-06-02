@@ -1,0 +1,79 @@
+---
+import { Image } from 'astro:assets'
+
+import EntryMeta from '@/components/EntryMeta.astro'
+import Heading from '@/components/Heading.astro'
+import illustBranch from '@/images/common/illust-branch.svg'
+import eyecatch from '@/images/portfolio/gallery/eyecatch.jpg'
+import photo01 from '@/images/portfolio/gallery/photo-01.jpg'
+import photo02 from '@/images/portfolio/gallery/photo-02.jpg'
+import photo03 from '@/images/portfolio/gallery/photo-03.jpg'
+import photo04 from '@/images/portfolio/gallery/photo-04.jpg'
+import photo05 from '@/images/portfolio/gallery/photo-05.jpg'
+import thumbAngelinePortrait from '@/images/portfolio/thumb-angeline-portrait.jpg'
+import thumbGarethAndEvaEngagement from '@/images/portfolio/thumb-gareth_and_eva-engagement.jpg'
+import thumbRichardAndJaneWedding from '@/images/portfolio/thumb-richard_and_jane-wedding.jpg'
+import thumbSarahAndLukeWedding from '@/images/portfolio/thumb-sarah_and_luke-wedding.jpg'
+import Layout from '@/layouts/Lower.astro'
+
+const meta = {
+  date: '28 July 2023',
+  category: 'Wedding',
+}
+---
+
+<Layout title="Rachel & Jonathan">
+  <div class="container">
+    <Heading level={1}>
+      <Fragment slot="heading">Gallery</Fragment>
+      <span slot="copy" class="uppercase">Rachel & Jonathan</span>
+    </Heading>
+  </div>
+
+  <main class="@container container">
+    <EntryMeta meta={meta} class="mt-9" data-fade-in="toTop" />
+    <Image src={eyecatch} alt="" class="mt-2 w-full" data-fade-in="toTop" />
+    <p class="mx-auto my-9.5 max-w-108 text-sm tracking-wider">
+      Lorem ipsum dolor sit amet consectetur. Vitae nunc vitae massa mattis quam
+      egestas egestas integer morbi. Lectus magnis accumsan nulla vulputate.
+      Malesuada varius sagittis nec id tellus vitae adipiscing id. Et vitae sit
+      urna aliquet sed arcu bibendum ut.
+    </p>
+    <div class="flex flex-wrap justify-between gap-x-[7.2cqi] gap-y-[6.1cqi]">
+      {
+        [photo01, photo02, photo03, photo04, photo05].map((photo) => (
+          <Image
+            src={photo}
+            alt=""
+            class="h-[50cqi] w-auto"
+            data-fade-in="toTop"
+          />
+        ))
+      }
+    </div>
+  </main>
+
+  <aside class="@container container mt-8.5 grid place-items-center">
+    <Image src={illustBranch} alt="" class="rotate-87" data-fade-in="toTop" />
+    <h2
+      class="font-garamond text-[1.7rem] tracking-wider text-gray-600 capitalize"
+      data-fade-in="toTop">
+      More Works
+    </h2>
+    <div
+      class="mt-10 grid w-full grid-cols-[repeat(auto-fit,minmax(min(100px,100%),1fr))] gap-[3.7cqi]">
+      {
+        [
+          thumbSarahAndLukeWedding,
+          thumbGarethAndEvaEngagement,
+          thumbAngelinePortrait,
+          thumbRichardAndJaneWedding,
+        ].map((thumb) => (
+          <a href="/portfolio/gallery">
+            <Image src={thumb} alt="" class="w-full" data-fade-in="toTop" />
+          </a>
+        ))
+      }
+    </div>
+  </aside>
+</Layout>

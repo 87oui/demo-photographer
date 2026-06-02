@@ -1,0 +1,118 @@
+---
+import { Image } from 'astro:assets'
+
+import Heading from '@/components/Heading.astro'
+import thumb01 from '@/images/blog/thumb-01.jpg'
+import thumb02 from '@/images/blog/thumb-02.jpg'
+import thumb03 from '@/images/blog/thumb-03.jpg'
+import thumb06 from '@/images/blog/thumb-06.jpg'
+import Layout from '@/layouts/Lower.astro'
+---
+
+<Layout title="Blog">
+  <div class="@container container">
+    <Heading level={1}>
+      <Fragment slot="heading">Blog</Fragment>
+      <span slot="copy" class="uppercase">Latest stories</span>
+    </Heading>
+    <main class="mt-7.5">
+      <p
+        class="mx-auto max-w-sm text-center font-light text-gray-800"
+        data-fade-in="toTop">
+        Lorem ipsum dolor sit amet consectetur. Ipsum velit tincidunt tristique
+        cras urna. Amet pellentesque erat dui lacus ultricies nec sit.
+      </p>
+      <div
+        class="mt-18 grid grid-cols-[repeat(auto-fill,minmax(min(250px,100%),1fr))] gap-x-[9cqi] gap-y-[9.9cqi]">
+        {
+          [
+            {
+              thumb: thumb01,
+              title: 'Gift ideas for the bride & groom on the wedding day',
+              meta: {
+                date: '28 July 2023',
+                category: 'Wedding',
+              },
+              excerpt:
+                'Lorem ipsum dolor sit amet as a consectetur. Rutrum ins tincidunt consequat nec potenti. Justo molestie amet vulputate.',
+            },
+            {
+              thumb: thumb02,
+              title: 'Gift ideas for the bride & groom on the wedding day',
+              meta: {
+                date: '28 July 2023',
+                category: 'Wedding',
+              },
+              excerpt:
+                'Lorem ipsum dolor sit amet as a consectetur. Rutrum ins tincidunt consequat nec potenti. Justo molestie amet vulputate.',
+            },
+            {
+              thumb: thumb03,
+              title: 'Gift ideas for the bride & groom on the wedding day',
+              meta: {
+                date: '28 July 2023',
+                category: 'Wedding',
+              },
+              excerpt:
+                'Lorem ipsum dolor sit amet as a consectetur. Rutrum ins tincidunt consequat nec potenti. Justo molestie amet vulputate.',
+            },
+            {
+              thumb: thumb02,
+              title: 'Gift ideas for the bride & groom on the wedding day',
+              meta: {
+                date: '28 July 2023',
+                category: 'Wedding',
+              },
+              excerpt:
+                'Lorem ipsum dolor sit amet as a consectetur. Rutrum ins tincidunt consequat nec potenti. Justo molestie amet vulputate.',
+            },
+            {
+              thumb: thumb01,
+              title: 'Gift ideas for the bride & groom on the wedding day',
+              meta: {
+                date: '28 July 2023',
+                category: 'Wedding',
+              },
+              excerpt:
+                'Lorem ipsum dolor sit amet as a consectetur. Rutrum ins tincidunt consequat nec potenti. Justo molestie amet vulputate.',
+            },
+            {
+              thumb: thumb06,
+              title: 'Gift ideas for the bride & groom on the wedding day',
+              meta: {
+                date: '28 July 2023',
+                category: 'Wedding',
+              },
+              excerpt:
+                'Lorem ipsum dolor sit amet as a consectetur. Rutrum ins tincidunt consequat nec potenti. Justo molestie amet vulputate.',
+            },
+          ].map(({ thumb, title, meta, excerpt }) => (
+            <article class="relative grid gap-y-4">
+              <Image
+                src={thumb}
+                alt=""
+                class="aspect-514/386 h-auto w-full object-cover"
+              />
+              <h2 class="text-[1.7rem]/snug tracking-wider text-gray-600 uppercase">
+                <a href="/blog/entry" class="after:absolute after:inset-0">
+                  {title}
+                </a>
+              </h2>
+              <dl class="">
+                {Object.entries(meta).map(([key, value]) => (
+                  <div class="flex flex-wrap items-baseline">
+                    <dt class="font-light capitalize">{key}: </dt>
+                    <dd class="font-ephesis text-primary-dark pl-1.5 text-sm tracking-wider">
+                      {value}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+              <p class="font-light text-gray-800">{excerpt}</p>
+            </article>
+          ))
+        }
+      </div>
+    </main>
+  </div>
+</Layout>

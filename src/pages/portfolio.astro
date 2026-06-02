@@ -1,0 +1,154 @@
+---
+import { Image } from 'astro:assets'
+
+import Button from '@/components/Button.astro'
+import Heading from '@/components/Heading.astro'
+import cta from '@/images/portfolio/cta.jpg'
+import promise from '@/images/portfolio/promise.jpg'
+import thumbAngelinePortrait from '@/images/portfolio/thumb-angeline-portrait.jpg'
+import thumbGarethAndEvaEngagement from '@/images/portfolio/thumb-gareth_and_eva-engagement.jpg'
+import thumbGarethAndEvaWedding from '@/images/portfolio/thumb-gareth_and_eva-wedding.jpg'
+import thumbJanePortrait from '@/images/portfolio/thumb-jane-portrait.jpg'
+import thumbRichardAndJaneEngagement from '@/images/portfolio/thumb-richard_and_jane-engagement.jpg'
+import thumbRichardAndJaneWedding from '@/images/portfolio/thumb-richard_and_jane-wedding.jpg'
+import thumbSarahPortrait from '@/images/portfolio/thumb-sarah-portrait.jpg'
+import thumbSarahAndLukeEngagement from '@/images/portfolio/thumb-sarah_and_luke-engagement.jpg'
+import thumbSarahAndLukeWedding from '@/images/portfolio/thumb-sarah_and_luke-wedding.jpg'
+import Layout from '@/layouts/Lower.astro'
+
+const works = [
+  {
+    title: 'Sarah & Luke',
+    category: 'Wedding',
+    thumb: thumbSarahAndLukeWedding,
+  },
+  {
+    title: 'Richard & Jane',
+    category: 'Wedding',
+    thumb: thumbRichardAndJaneWedding,
+  },
+  {
+    title: 'Gareth & Eva',
+    category: 'Wedding',
+    thumb: thumbGarethAndEvaWedding,
+  },
+  {
+    title: 'Sarah & Luke',
+    category: 'Engagement',
+    thumb: thumbSarahAndLukeEngagement,
+  },
+  {
+    title: 'Richard & Jane',
+    category: 'Engagement',
+    thumb: thumbRichardAndJaneEngagement,
+  },
+  {
+    title: 'Gareth & Eva',
+    category: 'Engagement',
+    thumb: thumbGarethAndEvaEngagement,
+  },
+  {
+    title: 'Sarah',
+    category: 'Portrait',
+    thumb: thumbSarahPortrait,
+  },
+  {
+    title: 'Jane',
+    category: 'Portrait',
+    thumb: thumbJanePortrait,
+  },
+  {
+    title: 'Angelina',
+    category: 'Portrait',
+    thumb: thumbAngelinePortrait,
+  },
+]
+---
+
+<Layout title="Portfolio">
+  <div class="container">
+    <Heading level={1}>
+      <Fragment slot="heading">Portfolio</Fragment>
+      <span slot="copy" class="uppercase">Highlighted works</span>
+    </Heading>
+  </div>
+
+  <main>
+    <section class="">
+      <div class="@container container grid">
+        <div
+          class="mt-16.5 grid grid-cols-[repeat(auto-fit,minmax(min(220px,100%),1fr))] grid-rows-[repeat(3,auto)] gap-x-[6.5cqi] gap-y-[9.5cqi]">
+          {
+            works.map(({ title, category, thumb }) => (
+              <article
+                class="relative grid place-items-center bg-gray-100 pb-1.5"
+                data-fade-in="toTop">
+                <Image src={thumb} alt="" class="w-full" />
+                <h2 class="font-ephesis mt-3.5 text-[1.3rem] tracking-wider text-gray-600">
+                  <a
+                    href="/portfolio/gallery"
+                    class="after:absolute after:inset-0">
+                    {title}
+                  </a>
+                </h2>
+                <p class="text-primary-dark font-raleway leading-relaxed font-medium tracking-[0.2em] uppercase">
+                  {category}
+                </p>
+              </article>
+            ))
+          }
+        </div>
+        <Button
+          href="/contact"
+          color="primary-inverse"
+          class="mt-12.5 place-self-center uppercase">
+          Get in touch
+        </Button>
+      </div>
+    </section>
+
+    <section
+      class="mt-21.5 grid grid-cols-[var(--gutter)_1fr_var(--gutter)] grid-rows-[--spacing(10)_1fr_--spacing(10)] place-items-center">
+      <Image
+        src={promise}
+        alt=""
+        class="col-span-full col-start-1 row-span-full row-start-1 h-full w-full object-cover"
+      />
+      <div
+        class="before:border-primary-dark relative z-1 col-start-2 row-start-2 grid h-fit w-full max-w-[968px] place-items-center bg-white/90 p-9 text-center before:absolute before:inset-2.5 before:-z-1 before:border">
+        <h2 class="font-ephesis text-primary-dark text-[2.1rem]/none">
+          My Promise
+        </h2>
+        <p class="mt-3 max-w-106 font-light">
+          I guarantee breathtaking wedding photos that perfectly capture the
+          magic of your special day, or your money back
+        </p>
+      </div>
+    </section>
+
+    <section
+      class="z-1 mt-21.5 grid grid-cols-[var(--gutter)_1fr_var(--gutter)] before:-z-1 before:col-span-full before:row-span-3 before:row-start-2 before:bg-gray-100 sm:grid-cols-[var(--gutter)_1fr_6.9cqi_46.9cqi_var(--gutter)] sm:grid-rows-[--spacing(12)_repeat(3,auto)_--spacing(18.5)]">
+      <Heading class="col-start-2 row-start-2 items-start self-end pt-4">
+        <Fragment slot="heading">You're perfect</Fragment>
+        <span slot="copy" class="font-ephesis">Stay Beautiful</span>
+      </Heading>
+      <p class="col-start-2 row-start-3 font-light" data-fade-in="toTop">
+        Lorem ipsum dolor sit amet consectetur. Ac in bibendum pharetra justo
+        nullam est placerat. Eget tortor lacus porta pellentesque duis velit
+        habitant nisl dignissim.
+      </p>
+      <Button
+        href="/contact"
+        class="col-start-2 row-start-4 my-6.5 place-self-start self-start sm:mb-12"
+        data-fade-in="toTop">
+        Enquire Now
+      </Button>
+      <Image
+        src={cta}
+        alt=""
+        class="h-full w-full object-cover max-sm:hidden sm:-col-end-2 sm:row-span-full"
+        data-fade-in="toTop"
+      />
+    </section>
+  </main>
+</Layout>
